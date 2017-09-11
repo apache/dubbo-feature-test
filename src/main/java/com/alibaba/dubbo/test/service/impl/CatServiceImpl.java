@@ -3,6 +3,7 @@ package com.alibaba.dubbo.test.service.impl;
 import com.alibaba.dubbo.test.service.CatService;
 import com.alibaba.dubbo.test.service.MouseService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service("catService")
 public class CatServiceImpl implements CatService {
 
+    @Autowired
     private MouseService mouseService;
 
     @Override
