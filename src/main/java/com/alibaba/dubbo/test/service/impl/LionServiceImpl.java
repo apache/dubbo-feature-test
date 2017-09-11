@@ -19,12 +19,15 @@ public class LionServiceImpl implements LionService {
     private DogService dogService;
 
     @Override
-    public void eat() {
-
+    public void eat(String master) {
+        System.out.println(master + " eat me.");
+        dogService.eat("dog");
+        catService.eat("cat");
+        mouseService.eat("mouse");
     }
 
     @Override
-    public void getName() {
-
+    public String getName() {
+        return "Simba Lion";
     }
 }
