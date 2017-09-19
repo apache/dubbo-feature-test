@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.alibaba.dubbo</groupId>
@@ -21,14 +21,29 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.6</java.version>
-        <tomcat.version>7.0.59</tomcat.version>
+		<java.version>1.6</java.version>
+		<tomcat.version>7.0.59</tomcat.version>
+		<docker.assemblyDescriptorRef>artifact</docker.assemblyDescriptorRef>
+		<docker.from>docker.io/fabric8/java-jboss-openjdk8-jdk:1.0.10</docker.from>
+		<docker.image>weipeng2k/${project.artifactId}:${project.version}</docker.image>
+		<docker.port.container.http>8080</docker.port.container.http>
+		<docker.port.container.jolokia>8778</docker.port.container.jolokia>
+		<fabric8.iconRef>icons/spring-boot</fabric8.iconRef>
+		<fabric8.readinessProbe.httpGet.path>/health</fabric8.readinessProbe.httpGet.path>
+		<fabric8.readinessProbe.httpGet.port>8080</fabric8.readinessProbe.httpGet.port>
+		<fabric8.readinessProbe.initialDelaySeconds>5</fabric8.readinessProbe.initialDelaySeconds>
+		<fabric8.readinessProbe.timeoutSeconds>30</fabric8.readinessProbe.timeoutSeconds>
+		<fabric8.service.containerPort>8080</fabric8.service.containerPort>
+		<fabric8.service.name>dubbo-feature-test</fabric8.service.name>
+		<fabric8.service.port>80</fabric8.service.port>
+		<fabric8.service.type>LoadBalancer</fabric8.service.type>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -39,7 +54,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
-            <version>2.5.5</version>
+			<version>2.5.5</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.javassist</groupId>
@@ -75,6 +90,50 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.14.2</version>
+				<configuration>
+					<images>
+						<image>
+							<name>${docker.image}</name>
+							<build>
+								<from>${docker.from}</from>
+								<assembly>
+									<basedir>/app</basedir>
+									<descriptorRef>${docker.assemblyDescriptorRef}</descriptorRef>
+								</assembly>
+								<env>
+									<JAR>${project.artifactId}-${project.version}.jar</JAR>
+									<JAVA_OPTIONS>-Djava.security.egd=/dev/./urandom</JAVA_OPTIONS>
+								</env>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>2.2.100</version>
+				<executions>
+					<execution>
+						<id>json</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>json</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>attach</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
