@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class DubboFeatureTestApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+
 
 }

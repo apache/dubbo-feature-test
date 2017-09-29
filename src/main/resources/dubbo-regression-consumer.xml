@@ -19,11 +19,17 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    
+    <dubbo:consumer />
 
+    <dubbo:reference id="demoService" interface="com.alibaba.dubbo.test.service.DemoService" />
 
-    <!-- 和本地bean一样实现服务 -->
-    <dubbo:service interface="com.alibaba.dubbo.test.service.CatService" ref="catService"/>
+    <dubbo:reference id="asyncService" interface="com.alibaba.dubbo.test.service.AsyncService" />
 
-    <dubbo:reference id="mouseService" interface="com.alibaba.dubbo.test.service.MouseService" />
+    <dubbo:reference id="cacheService" interface="com.alibaba.dubbo.test.service.CacheService" />
+
+    <dubbo:reference id="wsService" interface="com.alibaba.dubbo.test.service.WSService" />
+
+    <dubbo:reference id="annotateService" interface="com.alibaba.dubbo.test.service.AnnotateService" />
 
 </beans>
