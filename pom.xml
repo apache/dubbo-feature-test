@@ -140,7 +140,7 @@
 								</assembly>
 								<env>
 									<JAR>${project.artifactId}-${project.version}.jar</JAR>
-									<JAVA_OPTIONS>-Djava.security.egd=/dev/./urandom</JAVA_OPTIONS>
+									<JAVA_OPTIONS>-Djava.security.egd=/dev/./urandom -Dspring.profiles.active=regression-provider</JAVA_OPTIONS>
 								</env>
 							</build>
 						</image>
