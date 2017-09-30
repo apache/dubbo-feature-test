@@ -25,7 +25,8 @@
 		<tomcat.version>7.0.59</tomcat.version>
 		<docker.assemblyDescriptorRef>artifact</docker.assemblyDescriptorRef>
 		<docker.from>docker.io/fabric8/java-jboss-openjdk8-jdk:1.0.10</docker.from>
-		<docker.image>dubboteam/${project.artifactId}:${project.version}</docker.image>
+		<docker.image.name></docker.image.name>
+		<docker.image>dubboteam/${project.artifactId}-${docker.image.name}</docker.image>
 		<docker.port.container.http>8080</docker.port.container.http>
 		<docker.port.container.jolokia>8778</docker.port.container.jolokia>
 		<fabric8.iconRef>icons/spring-boot</fabric8.iconRef>
@@ -131,7 +132,7 @@
 				<configuration>
 					<images>
 						<image>
-							<name>${docker.image}</name>
+							<name>${docker.image}:${project.version}</name>
 							<build>
 								<from>${docker.from}</from>
 								<assembly>
@@ -140,7 +141,7 @@
 								</assembly>
 								<env>
 									<JAR>${project.artifactId}-${project.version}.jar</JAR>
-									<JAVA_OPTIONS>-Djava.security.egd=/dev/./urandom</JAVA_OPTIONS>
+									<JAVA_OPTIONS>-Djava.security.egd=/dev/./urandom -Dspring.profiles.active=regression-provider</JAVA_OPTIONS>
 								</env>
 							</build>
 						</image>
