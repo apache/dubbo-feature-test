@@ -6,7 +6,11 @@
 	<groupId>com.alibaba.dubbo</groupId>
 	<artifactId>dubbo-feature-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>provider-test</module>
+		<module>consumer-test</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>dubbo-feature-test</name>
 	<description>Test project for Dubbo</description>
