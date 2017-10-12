@@ -12,26 +12,32 @@ import java.util.Map;
 public class DemoServiceImpl implements DemoService {
     @Override
     public String testString(String str) {
-        return null;
+        return str;
     }
 
     @Override
-    public boolean testPojo(Bean bean) {
-        return false;
+    public Bean testPojo(Bean bean) {
+        return bean;
     }
 
     @Override
-    public boolean testList(List<Bean> list) {
-        return false;
+    public List<Bean> testList(List<Bean> list) {
+        return list;
     }
 
     @Override
-    public boolean testMap(Map<String, Object> map) {
-        return false;
+    public Map<String, Object> testMap(Map<String, Object> map) {
+        return map;
+    }
+
+    /*@Override
+    public LocalDateTime testJava8Time(LocalDateTime instant) {
+        return instant;
     }
 
     @Override
-    public Bean testResult(Bean bean) {
-        return null;
-    }
+    public ZonedDateTime testJava8Time(ZonedDateTime zonedDateTime) {
+        return zonedDateTime;
+    }*/
+
 }

@@ -10,6 +10,14 @@ public class Bean implements Serializable {
 
     private String name;
 
+    public Bean() {
+    }
+
+    public Bean(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -25,4 +33,6 @@ public class Bean implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
