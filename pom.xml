@@ -30,7 +30,7 @@
 		<tomcat.version>7.0.59</tomcat.version>
 		<docker.assemblyDescriptorRef>artifact</docker.assemblyDescriptorRef>
 		<docker.from>docker.io/fabric8/java-jboss-openjdk8-jdk:1.0.10</docker.from>
-		<docker.image>dubboteam-regression-provider:${project.version}</docker.image>
+		<docker.image>dubbo-test-${side}:0.0.1</docker.image>
 		<docker.port.container.http>8080</docker.port.container.http>
 		<docker.port.container.jolokia>8778</docker.port.container.jolokia>
 		<fabric8.iconRef>icons/spring-boot</fabric8.iconRef>

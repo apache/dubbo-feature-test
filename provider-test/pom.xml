@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.alibaba.dubbo</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>test-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
