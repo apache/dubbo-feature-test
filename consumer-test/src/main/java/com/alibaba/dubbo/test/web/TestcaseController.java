@@ -1,5 +1,6 @@
 package com.alibaba.dubbo.test.web;
 
+import com.alibaba.dubbo.rpc.service.GenericService;
 import com.alibaba.dubbo.test.dto.Bean;
 import com.alibaba.dubbo.test.service.AnnotateService;
 import com.alibaba.dubbo.test.service.AsyncService;
@@ -8,21 +9,27 @@ import com.alibaba.dubbo.test.service.DemoService;
 import com.alibaba.dubbo.test.service.WSService;
 
 import org.junit.Assert;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by ken.lj on 2017/9/25.
  */
 @RestController
 @RequestMapping("/testcase")
-public class TestcaseController {
+public class TestcaseController implements ApplicationContextAware{
+    private ApplicationContext context;
 
     @Autowired
     private DemoService demoService;
@@ -85,6 +92,23 @@ public class TestcaseController {
     @RequestMapping("/annotate")
     public String testAnnotate() {
         return "annotate";
+    }
+
+    @RequestMapping("/reference/generic")
+    public String testReferenceGeneric() {
+        GenericService genericService = (GenericService)context.getBean("genericTestService");
+        Map<String, Set<String>> map = new HashMap<String, Set<String>>();
+        Set<String> set = new HashSet<String>();
+        set.add("v1");
+        set.add("v2");
+        map.put("key", set);
+        Object result = genericService.$invoke("testGenericWithJsonSerialization", new String[] { "java.util.Map" }, new Object[] { map });
+        return "generic";
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
     }
 
    /* @RequestMapping("/java8time")
