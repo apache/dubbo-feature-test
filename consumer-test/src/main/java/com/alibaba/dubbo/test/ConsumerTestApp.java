@@ -3,7 +3,10 @@ package com.alibaba.dubbo.test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
+/**
+ * @author ken.lj
+ * @date 2017/09/10
+ */
 @SpringBootApplication
 public class ConsumerTestApp {
 

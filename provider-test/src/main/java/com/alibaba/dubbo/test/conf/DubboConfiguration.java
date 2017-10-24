@@ -4,10 +4,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 /**
- * Created by ken.lj on 2017/9/10.
+ * @author ken.lj
+ * @date 2017/09/10
  */
 @Configuration
-@ImportResource(locations = {"classpath:dubbo-common.xml", "classpath:dubbo-${spring.profiles.active}.xml"})
+@ImportResource(locations = {"classpath:dubbo-common.xml", "classpath:dubbo-${config.file}.xml"})
 public class DubboConfiguration {
 
 }

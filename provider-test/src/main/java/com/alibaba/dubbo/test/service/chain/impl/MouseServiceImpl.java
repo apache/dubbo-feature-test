@@ -5,7 +5,8 @@ import com.alibaba.dubbo.test.service.chain.MouseService;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by ken.lj on 2017/9/8.
+ * @author ken.lj
+ * @date 2017/09/10
  */
 @Service("mouseService")
 public class MouseServiceImpl implements MouseService {

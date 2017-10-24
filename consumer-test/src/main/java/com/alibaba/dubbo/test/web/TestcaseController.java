@@ -1,5 +1,6 @@
 package com.alibaba.dubbo.test.web;
 
+import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.service.GenericService;
 import com.alibaba.dubbo.test.dto.Bean;
 import com.alibaba.dubbo.test.service.AnnotateService;
@@ -16,6 +17,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,15 +26,19 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by ken.lj on 2017/9/25.
+ * @author ken.lj
+ * @date 2017/09/10
  */
 @RestController
 @RequestMapping("/testcase")
 public class TestcaseController implements ApplicationContextAware{
     private ApplicationContext context;
 
-    @Autowired
+    @Resource(name="demoService")
     private DemoService demoService;
+    // RMI RPC协议测试
+    @Resource(name="rmiDemoService")
+    private DemoService rmiDemoService;
     @Autowired
     private AsyncService asyncService;
     @Autowired
@@ -106,10 +112,18 @@ public class TestcaseController implements ApplicationContextAware{
         return "generic";
     }
 
+    @RequestMapping("/rmi")
+    public String testRMI() {
+        RpcContext context = RpcContext.getContext();
+        context.setAttachment("rmikey", "rmivalue");
+        return rmiDemoService.testString("rmi");
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.context = applicationContext;
     }
+
 
    /* @RequestMapping("/java8time")
     public String testJava8Time() {

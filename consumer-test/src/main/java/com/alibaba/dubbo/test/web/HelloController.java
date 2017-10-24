@@ -5,7 +5,8 @@ import com.alibaba.dubbo.test.service.AnnotateService;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by ken.lj on 2017/9/19.
+ * @author ken.lj
+ * @date 2017/09/10
  */
 @RestController
 public class HelloController extends BaseController<AnnotateService> {

@@ -20,7 +20,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <!--<dubbo:application name="provider-test" />-->
+    <!--<dubbo:monitor address="zabbix://127.0.0.1:20880" />-->
 
     <!-- 使用multicast广播注册中心暴露服务地址 -->
     <dubbo:registry client="curator" address="zookeeper://127.0.0.1:2181"/>
