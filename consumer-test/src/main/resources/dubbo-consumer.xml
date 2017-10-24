@@ -34,6 +34,7 @@
 
     <dubbo:reference id="genericTestService" generic="true"  interface="com.alibaba.dubbo.test.service.GenericTestService" />
 
+    <!-- RMI RPC测试 -->
     <dubbo:reference id="rmiDemoService" interface="com.alibaba.dubbo.test.service.DemoService" />
 
 </beans>
