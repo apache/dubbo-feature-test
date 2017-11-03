@@ -15,17 +15,13 @@
  - limitations under the License.
 -->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <dubbo:annotation package="com.alibaba.dubbo.test.service"/>
+    <!--<dubbo:annotation package="com.alibaba.dubbo.test.service"/>-->
 
-    <context:component-scan base-package="com.alibaba.dubbo.test.service"> </context:component-scan>
+    <!--<context:component-scan base-package="com.alibaba.dubbo.test.service"> </context:component-scan>-->
 
-
-
+    <!--<dubbo:service interface="com.alibaba.dubbo.test.service.AnnotateService" ref="annotateService"/>-->
+    <!--<bean id="demoService" class="com.alibaba.dubbo.test.service.impl.DemoServiceImpl" />-->
 </beans>

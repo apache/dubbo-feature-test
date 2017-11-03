@@ -20,29 +20,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:provider delay="-1" protocol="" serialization="fastjson"/>
-
     <dubbo:service interface="com.alibaba.dubbo.test.service.DemoService" ref="demoService"/>
-
-    <dubbo:service async="true" interface="com.alibaba.dubbo.test.service.AsyncService" ref="asyncService"/>
-
-    <dubbo:service interface="com.alibaba.dubbo.test.service.CacheService" ref="cacheService"/>
-
-    <dubbo:service interface="com.alibaba.dubbo.test.service.WSService" ref="wsService"/>
-
-    <dubbo:service interface="com.alibaba.dubbo.test.service.AnnotateService" ref="annotateService"/>
-
-    <dubbo:service interface="com.alibaba.dubbo.test.service.GenericTestService" ref="genericTestService"/>
-
-    <!-- RMI RPC协议测试 -->
-    <dubbo:service interface="com.alibaba.dubbo.test.service.DemoService" ref="demoService" protocol="rmi"/>
-
-    <bean id="demoService" class="com.alibaba.dubbo.test.service.impl.DemoServiceImpl" />
-    <bean id="asyncService" class="com.alibaba.dubbo.test.service.impl.AsycServiceImpl" />
-    <bean id="cacheService" class="com.alibaba.dubbo.test.service.impl.CacheServiceImpl" />
-    <bean id="wsService" class="com.alibaba.dubbo.test.service.impl.WSServiceImpl" />
-    <bean id="annotateService" class="com.alibaba.dubbo.test.service.impl.AnnotateServiceImpl" />
-    <bean id="genericTestService" class="com.alibaba.dubbo.test.service.impl.GenericTestServiceImpl" />
-
 
 </beans>

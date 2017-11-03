@@ -4,16 +4,20 @@ import com.alibaba.dubbo.test.dto.Bean;
 import com.alibaba.dubbo.test.dto.SubMap;
 import com.alibaba.dubbo.test.service.DemoService;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author ken.lj
  * @date 2017/09/10
  */
+@Service("demoService")
 public class DemoServiceImpl implements DemoService {
     @Override
+    @Transactional
     public String testString(String str) {
         return str;
     }
