@@ -5,7 +5,6 @@ import com.alibaba.dubbo.test.dto.SubMap;
 import com.alibaba.dubbo.test.service.DemoService;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,6 @@ import java.util.Map;
 @Service("demoService")
 public class DemoServiceImpl implements DemoService {
     @Override
-    @Transactional
     public String testString(String str) {
         return str;
     }
