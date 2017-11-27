@@ -12,5 +12,6 @@ public class ProviderTestApp {
 
 	public static void main(String[] args) throws InterruptedException {
 		new SpringApplicationBuilder(ProviderTestApp.class).web(false).run(args);
+		Thread.sleep(100000000);
 	}
 }
